@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+    <group
+        android:checkableBehavior="single">
+        <item android:icon="@drawable/profile_icon"
+            android:id="@+id/nav_profile"
+            android:title="Profile"/>
+        <item
+            android:icon="@drawable/tips_icon"
+            android:id="@+id/nav_some_tips"
+            android:title="Some Tips"/>
+
+        <item
+            android:icon="@drawable/rate_icon"
+            android:id="@+id/nav_rate"
+            android:title="Rate Us"/>
+        <item
+            android:icon="@drawable/about_us_icon"
+            android:id="@+id/nav_about"
+            android:title="About Us"/>
+
+        <item
+            android:icon="@drawable/share_icon"
+            android:id="@+id/nav_share"
+            android:title="Share this app"/>
+
+    </group>
+    <item
+        android:title="">
+        <menu>
+            <item
+                android:icon="@drawable/logout_icon"
+                android:id="@+id/nav_logout"
+                android:title="Logout"/>
+        </menu>
+    </item>
+</menu>

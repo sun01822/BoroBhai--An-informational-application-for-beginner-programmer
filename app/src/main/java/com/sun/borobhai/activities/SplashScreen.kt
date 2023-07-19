@@ -39,7 +39,7 @@ class SplashScreen : AppCompatActivity() {
         },3500)
     }
     private fun goToNext() {
-        val intent = Intent(this, LogIn::class.java)
+        val intent = Intent(this, MainActivity::class.java)
         startActivity(intent)
         finish()
     }

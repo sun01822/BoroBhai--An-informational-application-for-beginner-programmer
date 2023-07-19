@@ -9,6 +9,7 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
 import com.sun.borobhai.R
 import com.sun.borobhai.databinding.ActivitySignUpBinding
+import com.sun.borobhai.helper.Helper
 
 class SignUp : AppCompatActivity() {
     private lateinit var binding : ActivitySignUpBinding
@@ -17,6 +18,7 @@ class SignUp : AppCompatActivity() {
     private lateinit var imageUrl : String
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(Helper().FLAG_LAYOUT_NO_LIMITS, Helper().FLAG_LAYOUT_NO_LIMITS)
         binding = ActivitySignUpBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

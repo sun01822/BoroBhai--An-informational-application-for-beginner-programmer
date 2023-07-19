@@ -7,12 +7,14 @@ import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.sun.borobhai.MainActivity
 import com.sun.borobhai.databinding.ActivityLogInBinding
+import com.sun.borobhai.helper.Helper
 
 class LogIn : AppCompatActivity() {
     private lateinit var binding : ActivityLogInBinding
     private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(Helper().FLAG_LAYOUT_NO_LIMITS, Helper().FLAG_LAYOUT_NO_LIMITS)
         binding = ActivityLogInBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = FirebaseAuth.getInstance()
