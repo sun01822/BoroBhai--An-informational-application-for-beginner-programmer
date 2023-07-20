@@ -1,9 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- item_slider_image.xml -->
-<ImageView
+<androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/imageViewSlider"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:scaleType="centerCrop"
-    android:contentDescription="Image Slider" />
+    android:layout_height="200dp"
+    android:elevation="4dp"
+    android:layout_margin="5dp"
+    app:cardCornerRadius="25dp">
+
+    <ImageView
+        android:id="@+id/imageViewSlider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/logo"
+        android:contentDescription="Image Slider" />
+
+</androidx.cardview.widget.CardView>
