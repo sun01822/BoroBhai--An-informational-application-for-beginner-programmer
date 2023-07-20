@@ -16,7 +16,7 @@ class HomeFragment : Fragment() {
     private lateinit var gridRecyclerView: RecyclerView
     private lateinit var gridAdapter: GridAdapter
     private lateinit var binding : FragmentHomeBinding
-
+    private lateinit var value : String
     private val gridItems =listOf(
         GridItem("C programming", "https://res.cloudinary.com/practicaldev/image/fetch/s--jfMWJNMp--/c_imagga_scale,f_auto,fl_progressive,h_900,q_auto,w_1600/https://dev-to-uploads.s3.amazonaws.com/uploads/articles/b22wdroslo9khnoyssmn.png"),
         GridItem("C++", "https://www.nicepng.com/png/detail/111-1116276_computer-science-i-syllabus-and-grading-policy-c.png"),
@@ -41,7 +41,10 @@ class HomeFragment : Fragment() {
                 println("Position: ${position}")
                 println("GridItem: ${gridItem.name} ${gridItem.imageUrl}")
                 val fragment = when (position) {
-                    0 -> CFragment()
+                    0 -> {
+                        value = gridItem.name.toString()
+                        CFragment.newInstance(value)
+                    }
                     1 -> CPPFragment()
                     2 -> JavaFragment()
                     3 -> PythonFragment()
