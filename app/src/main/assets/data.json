@@ -1,0 +1,396 @@
+{
+  "languages": [
+    {
+      "name": "C programming",
+      "definition": "C is a general-purpose, procedural programming language.",
+      "why_learn": "C is the foundation of many other programming languages and is widely used in system programming, embedded systems, and low-level programming.",
+      "working_field": "Software development, systems programming, embedded systems, firmware development, operating systems, etc.",
+      "best_books": [
+        "The C Programming Language by Brian W. Kernighan and Dennis M. Ritchie",
+        "C Programming Absolute Beginner's Guide by Perry and Miller",
+        "C Programming for the Absolute Beginner by Vine",
+        "Head First C by Griffiths and Griffiths",
+        "Learn C the Hard Way by Shaw",
+        "C Programming: A Modern Approach by King"
+      ],
+      "best_editors": [
+        "Visual Studio Code",
+        "Eclipse IDE",
+        "Code::Blocks"
+      ],
+      "best_youtube_channels": [
+        "thenewboston",
+        "CodeWithHarry",
+        "GeeksforGeeks",
+        "Corey Schafer",
+        "Code Bullet",
+        "Programming with Mosh"
+      ],
+      "online_compilers": [
+        "OnlineGDB",
+        "Repl.it",
+        "JDoodle",
+        "IDEone",
+        "Coding Ground",
+        "GDB Online Debugger"
+      ],
+      "books_download_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ],
+      "editors_download_links": [
+        "link1",
+        "link2",
+        "link3"
+      ],
+      "youtube_channels_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ]
+    },
+    {
+      "name": "C++",
+      "definition": "C++ is a general-purpose, object-oriented programming language.",
+      "why_learn": "C++ extends C and adds support for object-oriented programming, making it suitable for a wide range of applications.",
+      "working_field": "Software development, game development, systems programming, high-performance applications, etc.",
+      "best_books": [
+        "The C++ Programming Language by Bjarne Stroustrup",
+        "C++ Primer by Stanley B. Lippman, Josée Lajoie, and Barbara E. Moo",
+        "Effective C++ by Scott Meyers",
+        "Accelerated C++ by Andrew Koenig and Barbara E. Moo",
+        "Programming: Principles and Practice Using C++ by Bjarne Stroustrup",
+        "C++ Concurrency in Action by Anthony Williams"
+      ],
+      "best_editors": [
+        "Visual Studio",
+        "CLion",
+        "Code::Blocks"
+      ],
+      "best_youtube_channels": [
+        "The Cherno",
+        "CppCon",
+        "C++ Weekly",
+        "CodeBeauty",
+        "Codevolution",
+        "Codecourse"
+      ],
+      "online_compilers": [
+        "Compiler Explorer",
+        "Repl.it",
+        "JDoodle",
+        "Godbolt",
+        "Coding Ground",
+        "GDB Online Debugger"
+      ],
+      "books_download_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ],
+      "editors_download_links": [
+        "link1",
+        "link2",
+        "link3"
+      ],
+      "youtube_channels_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ]
+    },
+    {
+      "name": "Java",
+      "definition": "Java is a general-purpose, object-oriented programming language.",
+      "why_learn": "Java is platform-independent, has a large ecosystem, and is widely used in enterprise applications and Android app development.",
+      "working_field": "Software development, Android app development, web development, enterprise applications, etc.",
+      "best_books": [
+        "Effective Java by Joshua Bloch",
+        "Java: The Complete Reference by Herbert Schildt",
+        "Head First Java by Kathy Sierra and Bert Bates",
+        "Thinking in Java by Bruce Eckel",
+        "Clean Code: A Handbook of Agile Software Craftsmanship by Robert C. Martin",
+        "Java Concurrency in Practice by Brian Goetz, Tim Peierls, Joshua Bloch, Joseph Bowbeer, David Holmes, and Doug Lea"
+      ],
+      "best_editors": [
+        "Eclipse IDE",
+        "IntelliJ IDEA",
+        "Visual Studio Code"
+      ],
+      "best_youtube_channels": [
+        "Programming with Mosh",
+        "Java Brains",
+        "Telusko",
+        "Cave of Programming",
+        "Derek Banas",
+        "CodeWithHarry"
+      ],
+      "online_compilers": [
+        "JDoodle",
+        "Repl.it",
+        "Godbolt",
+        "Coding Ground",
+        "JDoodle",
+        "GDB Online Debugger"
+      ],
+      "books_download_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ],
+      "editors_download_links": [
+        "link1",
+        "link2",
+        "link3"
+      ],
+      "youtube_channels_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ]
+    },
+    {
+      "name": "Python",
+      "definition": "Python is a high-level, interpreted programming language.",
+      "why_learn": "Python is easy to learn, versatile, and has a large community, making it ideal for web development, data analysis, AI, and scripting.",
+      "working_field": "Web development, data science, machine learning, artificial intelligence, automation, etc.",
+      "best_books": [
+        "Python Crash Course by Eric Matthes",
+        "Automate the Boring Stuff with Python by Al Sweigart",
+        "Learning Python by Mark Lutz",
+        "Python Cookbook by David Beazley and Brian K. Jones",
+        "Fluent Python by Luciano Ramalho",
+        "Effective Python by Brett Slatkin"
+      ],
+      "best_editors": [
+        "PyCharm",
+        "Visual Studio Code",
+        "Sublime Text"
+      ],
+      "best_youtube_channels": [
+        "Corey Schafer",
+        "sentdex",
+        "Tech With Tim",
+        "Real Python",
+        "freeCodeCamp.org",
+        "CodeWithHarry"
+      ],
+      "online_compilers": [
+        "Repl.it",
+        "JDoodle",
+        "Godbolt",
+        "Coding Ground",
+        "Compiler Explorer",
+        "GDB Online Debugger"
+      ],
+      "books_download_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ],
+      "editors_download_links": [
+        "link1",
+        "link2",
+        "link3"
+      ],
+      "youtube_channels_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ]
+    },
+    {
+      "name": "JavaScript",
+      "definition": "JavaScript is a high-level, interpreted programming language.",
+      "why_learn": "JavaScript is the language of the web, used for front-end and back-end development, making it essential for web developers.",
+      "working_field": "Web development, front-end development, back-end development, mobile app development, etc.",
+      "best_books": [
+        "Eloquent JavaScript by Marijn Haverbeke",
+        "JavaScript: The Good Parts by Douglas Crockford",
+        "You Don't Know JS by Kyle Simpson",
+        "JavaScript: The Definitive Guide by David Flanagan",
+        "JavaScript: The Weird Parts by Anthony Alicea",
+        "Learning JavaScript Design Patterns by Addy Osmani"
+      ],
+      "best_editors": [
+        "Visual Studio Code",
+        "Atom",
+        "Sublime Text"
+      ],
+      "best_youtube_channels": [
+        "freeCodeCamp.org",
+        "The Net Ninja",
+        "Traversy Media",
+        "CodeWithHarry",
+        "Programming with Mosh",
+        "Academind"
+      ],
+      "online_compilers": [
+        "Repl.it",
+        "JDoodle",
+        "Godbolt",
+        "Coding Ground",
+        "Compiler Explorer",
+        "GDB Online Debugger"
+      ],
+      "books_download_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ],
+      "editors_download_links": [
+        "link1",
+        "link2",
+        "link3"
+      ],
+      "youtube_channels_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ]
+    },
+    {
+      "name": "PHP",
+      "definition": "PHP is a server-side, scripting programming language.",
+      "why_learn": "PHP is widely used for web development and powers many popular websites and content management systems.",
+      "working_field": "Web development, server-side development, content management systems, e-commerce platforms, etc.",
+      "best_books": [
+        "PHP for the Web by Larry Ullman",
+        "Modern PHP: New Features and Good Practices by Josh Lockhart",
+        "PHP and MySQL Web Development by Luke Welling and Laura Thomson",
+        "Learning PHP, MySQL & JavaScript by Robin Nixon",
+        "PHP Objects, Patterns, and Practice by Matt Zandstra",
+        "Pro PHP Refactoring by Francesco Trucchia and Jacopo Romei"
+      ],
+      "best_editors": [
+        "Visual Studio Code",
+        "Sublime Text",
+        "Atom"
+      ],
+      "best_youtube_channels": [
+        "CodeWithHarry",
+        "Traversy Media",
+        "freeCodeCamp.org",
+        "Geeky Shows",
+        "Derek Banas",
+        "Programming with Mosh"
+      ],
+      "online_compilers": [
+        "Repl.it",
+        "JDoodle",
+        "Godbolt",
+        "Coding Ground",
+        "Compiler Explorer",
+        "GDB Online Debugger"
+      ],
+      "books_download_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ],
+      "editors_download_links": [
+        "link1",
+        "link2",
+        "link3"
+      ],
+      "youtube_channels_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ]
+    },
+    {
+      "name": "Kotlin",
+      "definition": "Kotlin is a modern, statically typed programming language.",
+      "why_learn": "Kotlin is designed to be fully interoperable with Java, making it a popular choice for Android app development.",
+      "working_field": "Android app development, server-side development, web development, etc.",
+      "best_books": [
+        "Kotlin in Action by Dmitry Jemerov and Svetlana Isakova",
+        "Programming Kotlin by Stephen Samuel and Stefan Bocutiu",
+        "Head First Kotlin by Dawn Griffiths and David Griffiths",
+        "Kotlin for Android Developers by Antonio Leiva",
+        "Modern Web Development with Kotlin by Denis Kalinin",
+        "Kotlin for Enterprise Applications by Petre Kozelj and Igor Kucherenko"
+      ],
+      "best_editors": [
+        "Android Studio",
+        "IntelliJ IDEA",
+        "Visual Studio Code"
+      ],
+      "best_youtube_channels": [
+        "Kotlin",
+        "CodeWithHarry",
+        "Telusko",
+        "Derek Banas",
+        "Kotlin for Android Developers",
+        "freeCodeCamp.org"
+      ],
+      "online_compilers": [
+        "Repl.it",
+        "JDoodle",
+        "Godbolt",
+        "Coding Ground",
+        "Compiler Explorer",
+        "GDB Online Debugger"
+      ],
+      "books_download_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ],
+      "editors_download_links": [
+        "link1",
+        "link2",
+        "link3"
+      ],
+      "youtube_channels_links": [
+        "link1",
+        "link2",
+        "link3",
+        "link4",
+        "link5",
+        "link6"
+      ]
+    }
+  ]
+}

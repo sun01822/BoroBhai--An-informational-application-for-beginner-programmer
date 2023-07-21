@@ -11,6 +11,7 @@ import com.sun.borobhai.R
 import com.sun.borobhai.adapter.GridAdapter
 import com.sun.borobhai.data.GridItem
 import com.sun.borobhai.databinding.FragmentHomeBinding
+import com.sun.borobhai.helper.FragmentHelper
 
 class HomeFragment : Fragment() {
     private lateinit var gridRecyclerView: RecyclerView
@@ -29,7 +30,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentHomeBinding.inflate(layoutInflater)
         gridRecyclerView = binding.gridRecyclerView
@@ -38,19 +39,35 @@ class HomeFragment : Fragment() {
         gridRecyclerView.adapter = gridAdapter
         gridAdapter.setOnclickListener(object : GridAdapter.OnClickListener{
             override fun onClick(position: Int, gridItem: GridItem) {
-                println("Position: ${position}")
-                println("GridItem: ${gridItem.name} ${gridItem.imageUrl}")
                 val fragment = when (position) {
                     0 -> {
                         value = gridItem.name.toString()
-                        CFragment.newInstance(value)
+                        FragmentHelper.getFragmentWithValue(CFragment(),value)
                     }
-                    1 -> CPPFragment()
-                    2 -> JavaFragment()
-                    3 -> PythonFragment()
-                    4 -> JavaScriptFragment()
-                    5 -> KotlinFragment()
-                    6 -> PhpFragment()
+                    1 -> {
+                        value = gridItem.name.toString()
+                        FragmentHelper.getFragmentWithValue(CPPFragment(),value)
+                    }
+                    2 -> {
+                        value = gridItem.name.toString()
+                        FragmentHelper.getFragmentWithValue(JavaFragment(),value)
+                    }
+                    3 -> {
+                        value = gridItem.name.toString()
+                        FragmentHelper.getFragmentWithValue(PythonFragment(),value)
+                    }
+                    4 -> {
+                        value = gridItem.name.toString()
+                        FragmentHelper.getFragmentWithValue(JavaScriptFragment(),value)
+                    }
+                    5 -> {
+                        value = gridItem.name.toString()
+                        FragmentHelper.getFragmentWithValue(KotlinFragment(),value)
+                    }
+                    6 -> {
+                        value = gridItem.name.toString()
+                        FragmentHelper.getFragmentWithValue(PhpFragment(),value)
+                    }
                     else -> {
                         null
                     }
@@ -64,7 +81,6 @@ class HomeFragment : Fragment() {
             override fun onClick(p0: View?) {
 
             }
-
         })
         return binding.root
     }
