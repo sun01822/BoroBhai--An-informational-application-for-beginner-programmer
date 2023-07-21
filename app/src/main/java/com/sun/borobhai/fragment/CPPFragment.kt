@@ -8,45 +8,64 @@ import android.view.ViewGroup
 import com.sun.borobhai.R
 import com.sun.borobhai.databinding.FragmentCPPBinding
 import com.sun.borobhai.helper.FragmentHelper
-import org.json.JSONException
+import com.sun.borobhai.helper.FragmentHelper.setupRecyclerView
 
 class CPPFragment : Fragment() {
     private lateinit var binding : FragmentCPPBinding
-    private lateinit var name : String
-    private lateinit var definition : String
-    private lateinit var whyLearn : String
+    private lateinit var booksImage : List<Int>
+    private lateinit var compilerImage : List<Int>
+    private lateinit var editorImage : List<Int>
+    private lateinit var youtubeImage : List<Int>
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentCPPBinding.inflate(layoutInflater)
-        val value = arguments?.getString("value_key")
-        val jsonString = FragmentHelper.loadJSONFromAsset(requireContext(), "data.json")
+        booksImage = listOf(R.drawable.book)
+        compilerImage = listOf(R.drawable.compiler)
+        editorImage = listOf(R.drawable.coding)
+        youtubeImage = listOf(R.drawable.youtuber)
 
-        jsonString?.let {
-            try {
-                val jsonArray = it.getJSONArray("languages")
-                for (i in 0 until jsonArray.length()) {
-                    val languageObject = jsonArray.getJSONObject(i)
-                    name = languageObject.getString("name")
-                    println("Name: $name\n\n")
-                    if (name == value) {
-                        definition = languageObject.getString("definition")
-                        whyLearn = languageObject.getString("why_learn")
-                        /*Toast.makeText(
-                            requireContext(),
-                            "Data fetched from JSON file",
-                            Toast.LENGTH_SHORT
-                        ).show()*/
-                        break
-                    }
-                }
-            } catch (e: JSONException) {
-                e.printStackTrace()
-            }
+        val value = arguments?.getString("value_key")
+
+        val jsonString = FragmentHelper.loadJSONFromAsset(requireContext(), "data.json")
+        val languageData = FragmentHelper.parseLanguageDataFromJSON(jsonString?.toString(), value!!)
+
+        languageData?.let {
+            binding.tvLanguageName.text = it.name
+            binding.tvLanguageDefinition.text = it.definition
+            binding.tvWhyLearn.text = it.whyLearn
+
+            setupRecyclerView(
+                requireContext(),
+                binding.rvBestBooks,
+                it.bestBooks,
+                it.booksDownloadLinks,
+                booksImage
+            )
+            setupRecyclerView(
+                requireContext(),
+                binding.rvBestEditors,
+                it.bestEditors,
+                it.editorsDownloadLinks,
+                editorImage
+            )
+            setupRecyclerView(
+                requireContext(),
+                binding.rvBestYouTubeChannels,
+                it.bestYouTubeChannels,
+                it.youtubeChannelsLinks,
+                youtubeImage
+            )
+            setupRecyclerView(
+                requireContext(),
+                binding.rvOnlineCompilers,
+                it.onlineCompilers,
+                emptyList(),
+                compilerImage
+            )
         }
-        binding.textView.text = definition
         return binding.root
     }
 }

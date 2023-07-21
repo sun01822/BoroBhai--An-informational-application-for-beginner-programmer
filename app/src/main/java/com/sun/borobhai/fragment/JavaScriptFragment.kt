@@ -6,18 +6,64 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.sun.borobhai.R
-import com.sun.borobhai.databinding.FragmentCBinding
 import com.sun.borobhai.databinding.FragmentJavaScriptBinding
+import com.sun.borobhai.helper.FragmentHelper
 
 class JavaScriptFragment : Fragment() {
     private lateinit var binding : FragmentJavaScriptBinding
+    private lateinit var booksImage : List<Int>
+    private lateinit var compilerImage : List<Int>
+    private lateinit var editorImage : List<Int>
+    private lateinit var youtubeImage : List<Int>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = FragmentJavaScriptBinding.inflate(layoutInflater)
+        booksImage = listOf(R.drawable.book)
+        compilerImage = listOf(R.drawable.compiler)
+        editorImage = listOf(R.drawable.coding)
+        youtubeImage = listOf(R.drawable.youtuber)
+
         val value = arguments?.getString("value_key")
-        binding.textView.text = value
+
+        val jsonString = FragmentHelper.loadJSONFromAsset(requireContext(), "data.json")
+        val languageData = FragmentHelper.parseLanguageDataFromJSON(jsonString?.toString(), value!!)
+
+        languageData?.let {
+            binding.tvLanguageName.text = it.name
+            binding.tvLanguageDefinition.text = it.definition
+            binding.tvWhyLearn.text = it.whyLearn
+
+            FragmentHelper.setupRecyclerView(
+                requireContext(),
+                binding.rvBestBooks,
+                it.bestBooks,
+                it.booksDownloadLinks,
+                booksImage
+            )
+            FragmentHelper.setupRecyclerView(
+                requireContext(),
+                binding.rvBestEditors,
+                it.bestEditors,
+                it.editorsDownloadLinks,
+                editorImage
+            )
+            FragmentHelper.setupRecyclerView(
+                requireContext(),
+                binding.rvBestYouTubeChannels,
+                it.bestYouTubeChannels,
+                it.youtubeChannelsLinks,
+                youtubeImage
+            )
+            FragmentHelper.setupRecyclerView(
+                requireContext(),
+                binding.rvOnlineCompilers,
+                it.onlineCompilers,
+                emptyList(),
+                compilerImage
+            )
+        }
         return binding.root
     }
 
