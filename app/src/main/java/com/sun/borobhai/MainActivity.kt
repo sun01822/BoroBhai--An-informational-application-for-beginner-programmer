@@ -3,14 +3,16 @@ package com.sun.borobhai
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
+import android.view.View
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
 import com.google.firebase.auth.FirebaseAuth
@@ -19,12 +21,16 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.sun.borobhai.activities.LogIn
+import com.sun.borobhai.adapter.GridAdapter
 import com.sun.borobhai.adapter.ImageSliderAdapter
+import com.sun.borobhai.data.GridItem
 import com.sun.borobhai.databinding.ActivityMainBinding
 import com.sun.borobhai.databinding.NavHeaderMainBinding
+import com.sun.borobhai.fragment.CFragment
+import com.sun.borobhai.fragment.HomeFragment
+import com.sun.borobhai.helper.Helper
 import de.hdodenhof.circleimageview.CircleImageView
 import java.util.*
-import kotlin.concurrent.timer
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -46,10 +52,9 @@ class MainActivity : AppCompatActivity() {
         "https://i.pinimg.com/originals/c9/88/9c/c9889cfcdb4204f02255db89c78e14a7.jpg"
     )
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.setFlags(Helper().FLAG_LAYOUT_NO_LIMITS, Helper().FLAG_LAYOUT_NO_LIMITS)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -65,7 +70,6 @@ class MainActivity : AppCompatActivity() {
         timer = Timer()
         timer.scheduleAtFixedRate(SliderTimer(imageRecyclerView), 3000, 3000)
 
-
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
 
@@ -74,6 +78,11 @@ class MainActivity : AppCompatActivity() {
         profileName = navHeaderMainBinding.profileName
         profileEmail = navHeaderMainBinding.profileEmail
         profileImage = navHeaderMainBinding.profileImage
+
+        val fragment = HomeFragment()
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragment_container, fragment)
+            .commit()
 
         val uid = auth.currentUser?.uid
         if (auth.currentUser == null) {
@@ -102,15 +111,6 @@ class MainActivity : AppCompatActivity() {
                     Toast.makeText(this@MainActivity, error.message, Toast.LENGTH_SHORT).show()
                 }
             })
-
-            binding.drawerButton.setOnClickListener{
-                if (!drawerLayout.isDrawerOpen(GravityCompat.START)) {
-                    drawerLayout.openDrawer(GravityCompat.START)
-                } else {
-                    drawerLayout.closeDrawer(GravityCompat.START)
-                }
-            }
-
             navigationView.setNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.nav_logout -> {
@@ -123,6 +123,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        val toggle = ActionBarDrawerToggle(this, drawerLayout, binding.toolbar, R.string.open_nav, R.string.close_nav)
+        drawerLayout.addDrawerListener(toggle)
+        toggle.syncState()
 
     }
     private fun logout() {
