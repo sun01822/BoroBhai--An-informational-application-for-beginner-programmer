@@ -19,6 +19,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.sun.borobhai.activities.LogIn
+import com.sun.borobhai.activities.ProfileActivity
 import com.sun.borobhai.adapter.ImageSliderAdapter
 import com.sun.borobhai.databinding.ActivityMainBinding
 import com.sun.borobhai.databinding.NavHeaderMainBinding
@@ -89,34 +90,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LogIn::class.java))
             finish()
         } else {
-            val userRef = database.reference.child("users").child(uid!!)
-            userRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val name = snapshot.child("name").value.toString()
-                    val email = snapshot.child("email").value.toString()
-                    val imageUrl = snapshot.child("imageUrl").value.toString()
-
-                    profileName.text = name
-                    profileEmail.text = email
-
-                    Glide.with(this@MainActivity)
-                        .load(imageUrl)
-                        .circleCrop()
-                        .placeholder(R.drawable.logo)
-                        .into(profileImage)
-
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    // Handle database error
-                    Toast.makeText(this@MainActivity, error.message, Toast.LENGTH_SHORT).show()
-                }
-            })
+            refreshNavHeader()
             navigationView.setNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.nav_logout -> {
                         // Handle logout menu item click
                         logout()
+                        true
+                    }
+                    R.id.nav_profile -> {
+                        startActivity(Intent(this, ProfileActivity::class.java))
                         true
                     }
                     // Handle other menu item clicks if needed
@@ -147,6 +130,36 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refreshNavHeader()
+    }
+    private fun refreshNavHeader() {
+        val uid = auth.currentUser?.uid
+        val userRef = database.reference.child("users").child(uid!!)
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val name = snapshot.child("name").value.toString()
+                val email = snapshot.child("email").value.toString()
+                val imageUrl = snapshot.child("imageUrl").value.toString()
+
+                profileName.text = name
+                profileEmail.text = email
+
+                Glide.with(this@MainActivity)
+                    .load(imageUrl)
+                    .circleCrop()
+                    .placeholder(R.drawable.logo)
+                    .into(profileImage)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle database error if needed
+                Toast.makeText(this@MainActivity, error.message, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
 
