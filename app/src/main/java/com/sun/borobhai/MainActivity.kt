@@ -3,14 +3,12 @@ package com.sun.borobhai
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -21,16 +19,14 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.sun.borobhai.activities.LogIn
-import com.sun.borobhai.adapter.GridAdapter
 import com.sun.borobhai.adapter.ImageSliderAdapter
-import com.sun.borobhai.data.GridItem
 import com.sun.borobhai.databinding.ActivityMainBinding
 import com.sun.borobhai.databinding.NavHeaderMainBinding
-import com.sun.borobhai.fragment.CFragment
 import com.sun.borobhai.fragment.HomeFragment
 import com.sun.borobhai.helper.Helper
 import de.hdodenhof.circleimageview.CircleImageView
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -45,6 +41,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageSliderAdapter: ImageSliderAdapter
     private lateinit var timer: Timer
 
+
     private val imageList = mutableListOf(
         "https://i.pinimg.com/originals/e7/1d/00/e71d00d119507842a4b850678446fc46.jpg",
         "https://wallpaperaccess.com/full/8992598.jpg",
@@ -57,6 +54,7 @@ class MainActivity : AppCompatActivity() {
         window.setFlags(Helper().FLAG_LAYOUT_NO_LIMITS, Helper().FLAG_LAYOUT_NO_LIMITS)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         drawerLayout = binding.drawerLayout
         navigationView = binding.navView
@@ -104,6 +102,7 @@ class MainActivity : AppCompatActivity() {
                         .circleCrop()
                         .placeholder(R.drawable.logo)
                         .into(profileImage)
+
                 }
 
                 override fun onCancelled(error: DatabaseError) {

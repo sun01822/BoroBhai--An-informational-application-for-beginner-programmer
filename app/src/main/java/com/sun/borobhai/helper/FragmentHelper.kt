@@ -6,6 +6,7 @@ import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sun.borobhai.R
 import com.sun.borobhai.adapter.HorizontalListAdapter
 import com.sun.borobhai.data.Language
 import org.json.JSONArray

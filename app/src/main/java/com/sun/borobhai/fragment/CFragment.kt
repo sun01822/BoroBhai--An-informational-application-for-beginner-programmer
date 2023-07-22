@@ -8,7 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.sun.borobhai.R
 import com.sun.borobhai.databinding.FragmentCBinding
-import com.sun.borobhai.helper.FragmentHelper
+import com.sun.borobhai.helper.FragmentHelper.loadJSONFromAsset
+import com.sun.borobhai.helper.FragmentHelper.parseLanguageDataFromJSON
 import com.sun.borobhai.helper.FragmentHelper.setupRecyclerView
 
 class CFragment : Fragment() {
@@ -30,8 +31,8 @@ class CFragment : Fragment() {
 
         val value = arguments?.getString("value_key")
 
-        val jsonString = FragmentHelper.loadJSONFromAsset(requireContext(), "data.json")
-        val languageData = FragmentHelper.parseLanguageDataFromJSON(jsonString?.toString(), value!!)
+        val jsonString = loadJSONFromAsset(requireContext(), "data.json")
+        val languageData = parseLanguageDataFromJSON(jsonString?.toString(), value!!)
 
         languageData?.let {
             binding.tvLanguageName.text = it.name
@@ -67,7 +68,6 @@ class CFragment : Fragment() {
                 compilerImage
             )
         }
-
         return binding.root
     }
 }
