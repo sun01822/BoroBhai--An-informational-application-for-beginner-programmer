@@ -43,10 +43,12 @@ class MainActivity : AppCompatActivity() {
 
 
     private val imageList = mutableListOf(
-        "https://i.pinimg.com/originals/e7/1d/00/e71d00d119507842a4b850678446fc46.jpg",
-        "https://wallpaperaccess.com/full/8992598.jpg",
-        "https://e1.pxfuel.com/desktop-wallpaper/699/446/desktop-wallpaper-black-programming-programming-quotes.jpg",
-        "https://i.pinimg.com/originals/c9/88/9c/c9889cfcdb4204f02255db89c78e14a7.jpg"
+        "https://cdn.quotesgram.com/img/73/31/1523667431-steve-jobs-coding-quote.jpg",
+        "https://www.azquotes.com/picture-quotes/quote-we-re-changing-the-world-with-technology-bill-gates-57-0-032.jpg",
+        "https://www.azquotes.com/picture-quotes/quote-the-trouble-with-programmers-is-that-you-can-never-tell-what-a-programmer-is-doing-until-seymour-cray-54-57-60.jpg",
+        "https://www.azquotes.com/picture-quotes/quote-basic-is-to-computer-programming-as-qwerty-is-to-typing-seymour-papert-84-82-56.jpg",
+        "https://www.azquotes.com/vangogh-image-quotes/72/21/Quotation-Mark-Zuckerberg-My-number-one-piece-of-advice-is-you-should-learn-72-21-21.jpg"
+
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -66,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         imageRecyclerView.adapter = imageSliderAdapter
 
         timer = Timer()
-        timer.scheduleAtFixedRate(SliderTimer(imageRecyclerView), 3000, 3000)
+        timer.scheduleAtFixedRate(SliderTimer(imageRecyclerView), 4000, 4000)
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
