@@ -8,6 +8,9 @@ import android.view.ViewGroup
 import com.sun.borobhai.R
 import com.sun.borobhai.databinding.FragmentKotlinBinding
 import com.sun.borobhai.helper.FragmentHelper
+import com.sun.borobhai.helper.FragmentHelper.loadJSONFromAsset
+import com.sun.borobhai.helper.FragmentHelper.parseLanguageDataFromJSON
+import com.sun.borobhai.helper.FragmentHelper.setupRecyclerView
 
 class KotlinFragment : Fragment() {
     private lateinit var binding : FragmentKotlinBinding
@@ -27,36 +30,36 @@ class KotlinFragment : Fragment() {
 
         val value = arguments?.getString("value_key")
 
-        val jsonString = FragmentHelper.loadJSONFromAsset(requireContext(), "data.json")
-        val languageData = FragmentHelper.parseLanguageDataFromJSON(jsonString?.toString(), value!!)
+        val jsonString = loadJSONFromAsset(requireContext(), "data.json")
+        val languageData = parseLanguageDataFromJSON(jsonString?.toString(), value!!)
 
         languageData?.let {
             binding.tvLanguageName.text = it.name
             binding.tvLanguageDefinition.text = it.definition
             binding.tvWhyLearn.text = it.whyLearn
 
-            FragmentHelper.setupRecyclerView(
+            setupRecyclerView(
                 requireContext(),
                 binding.rvBestBooks,
                 it.bestBooks,
                 it.booksDownloadLinks,
                 booksImage
             )
-            FragmentHelper.setupRecyclerView(
+            setupRecyclerView(
                 requireContext(),
                 binding.rvBestEditors,
                 it.bestEditors,
                 it.editorsDownloadLinks,
                 editorImage
             )
-            FragmentHelper.setupRecyclerView(
+            setupRecyclerView(
                 requireContext(),
                 binding.rvBestYouTubeChannels,
                 it.bestYouTubeChannels,
                 it.youtubeChannelsLinks,
                 youtubeImage
             )
-            FragmentHelper.setupRecyclerView(
+            setupRecyclerView(
                 requireContext(),
                 binding.rvOnlineCompilers,
                 it.onlineCompilers,

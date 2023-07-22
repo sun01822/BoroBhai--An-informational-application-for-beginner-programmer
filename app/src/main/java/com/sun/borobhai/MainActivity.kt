@@ -3,14 +3,12 @@ package com.sun.borobhai
 import android.content.Intent
 import android.os.Bundle
 import android.view.MenuItem
-import android.view.View
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -21,16 +19,15 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.sun.borobhai.activities.LogIn
-import com.sun.borobhai.adapter.GridAdapter
+import com.sun.borobhai.activities.ProfileActivity
 import com.sun.borobhai.adapter.ImageSliderAdapter
-import com.sun.borobhai.data.GridItem
 import com.sun.borobhai.databinding.ActivityMainBinding
 import com.sun.borobhai.databinding.NavHeaderMainBinding
-import com.sun.borobhai.fragment.CFragment
 import com.sun.borobhai.fragment.HomeFragment
 import com.sun.borobhai.helper.Helper
 import de.hdodenhof.circleimageview.CircleImageView
 import java.util.*
+
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding : ActivityMainBinding
@@ -45,11 +42,14 @@ class MainActivity : AppCompatActivity() {
     private lateinit var imageSliderAdapter: ImageSliderAdapter
     private lateinit var timer: Timer
 
+
     private val imageList = mutableListOf(
-        "https://i.pinimg.com/originals/e7/1d/00/e71d00d119507842a4b850678446fc46.jpg",
-        "https://wallpaperaccess.com/full/8992598.jpg",
-        "https://e1.pxfuel.com/desktop-wallpaper/699/446/desktop-wallpaper-black-programming-programming-quotes.jpg",
-        "https://i.pinimg.com/originals/c9/88/9c/c9889cfcdb4204f02255db89c78e14a7.jpg"
+        "https://cdn.quotesgram.com/img/73/31/1523667431-steve-jobs-coding-quote.jpg",
+        "https://www.azquotes.com/picture-quotes/quote-we-re-changing-the-world-with-technology-bill-gates-57-0-032.jpg",
+        "https://www.azquotes.com/picture-quotes/quote-the-trouble-with-programmers-is-that-you-can-never-tell-what-a-programmer-is-doing-until-seymour-cray-54-57-60.jpg",
+        "https://www.azquotes.com/picture-quotes/quote-basic-is-to-computer-programming-as-qwerty-is-to-typing-seymour-papert-84-82-56.jpg",
+        "https://www.azquotes.com/vangogh-image-quotes/72/21/Quotation-Mark-Zuckerberg-My-number-one-piece-of-advice-is-you-should-learn-72-21-21.jpg"
+
     )
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -57,6 +57,7 @@ class MainActivity : AppCompatActivity() {
         window.setFlags(Helper().FLAG_LAYOUT_NO_LIMITS, Helper().FLAG_LAYOUT_NO_LIMITS)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         drawerLayout = binding.drawerLayout
         navigationView = binding.navView
@@ -68,7 +69,7 @@ class MainActivity : AppCompatActivity() {
         imageRecyclerView.adapter = imageSliderAdapter
 
         timer = Timer()
-        timer.scheduleAtFixedRate(SliderTimer(imageRecyclerView), 3000, 3000)
+        timer.scheduleAtFixedRate(SliderTimer(imageRecyclerView), 4000, 4000)
 
         auth = FirebaseAuth.getInstance()
         database = FirebaseDatabase.getInstance()
@@ -89,33 +90,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, LogIn::class.java))
             finish()
         } else {
-            val userRef = database.reference.child("users").child(uid!!)
-            userRef.addListenerForSingleValueEvent(object : ValueEventListener {
-                override fun onDataChange(snapshot: DataSnapshot) {
-                    val name = snapshot.child("name").value.toString()
-                    val email = snapshot.child("email").value.toString()
-                    val imageUrl = snapshot.child("imageUrl").value.toString()
-
-                    profileName.text = name
-                    profileEmail.text = email
-
-                    Glide.with(this@MainActivity)
-                        .load(imageUrl)
-                        .circleCrop()
-                        .placeholder(R.drawable.logo)
-                        .into(profileImage)
-                }
-
-                override fun onCancelled(error: DatabaseError) {
-                    // Handle database error
-                    Toast.makeText(this@MainActivity, error.message, Toast.LENGTH_SHORT).show()
-                }
-            })
+            refreshNavHeader()
             navigationView.setNavigationItemSelectedListener { menuItem ->
                 when (menuItem.itemId) {
                     R.id.nav_logout -> {
                         // Handle logout menu item click
                         logout()
+                        true
+                    }
+                    R.id.nav_profile -> {
+                        startActivity(Intent(this, ProfileActivity::class.java))
                         true
                     }
                     // Handle other menu item clicks if needed
@@ -146,6 +130,36 @@ class MainActivity : AppCompatActivity() {
             }
             else -> super.onOptionsItemSelected(item)
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        refreshNavHeader()
+    }
+    private fun refreshNavHeader() {
+        val uid = auth.currentUser?.uid
+        val userRef = database.reference.child("users").child(uid!!)
+        userRef.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val name = snapshot.child("name").value.toString()
+                val email = snapshot.child("email").value.toString()
+                val imageUrl = snapshot.child("imageUrl").value.toString()
+
+                profileName.text = name
+                profileEmail.text = email
+
+                Glide.with(this@MainActivity)
+                    .load(imageUrl)
+                    .circleCrop()
+                    .placeholder(R.drawable.logo)
+                    .into(profileImage)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle database error if needed
+                Toast.makeText(this@MainActivity, error.message, Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }
 
