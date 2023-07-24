@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.sun.borobhai.activities.LogIn
 import com.sun.borobhai.activities.ProfileActivity
+import com.sun.borobhai.activities.SometipsActivity
 import com.sun.borobhai.adapter.ImageSliderAdapter
 import com.sun.borobhai.databinding.ActivityMainBinding
 import com.sun.borobhai.databinding.NavHeaderMainBinding
@@ -84,8 +85,6 @@ class MainActivity : AppCompatActivity() {
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragment_container, fragment)
             .commit()
-
-        val uid = auth.currentUser?.uid
         if (auth.currentUser == null) {
             startActivity(Intent(this, LogIn::class.java))
             finish()
@@ -100,6 +99,10 @@ class MainActivity : AppCompatActivity() {
                     }
                     R.id.nav_profile -> {
                         startActivity(Intent(this, ProfileActivity::class.java))
+                        true
+                    }
+                    R.id.nav_some_tips -> {
+                        startActivity(Intent(this, SometipsActivity::class.java))
                         true
                     }
                     // Handle other menu item clicks if needed

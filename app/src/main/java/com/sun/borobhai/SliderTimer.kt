@@ -5,7 +5,6 @@ import androidx.recyclerview.widget.RecyclerView
 import java.util.*
 
 class SliderTimer(private val recyclerView: RecyclerView) : TimerTask() {
-
     override fun run() {
         recyclerView.post {
             val layoutManager = recyclerView.layoutManager as LinearLayoutManager

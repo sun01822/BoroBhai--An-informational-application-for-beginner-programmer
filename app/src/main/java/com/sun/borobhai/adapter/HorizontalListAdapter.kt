@@ -8,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.sun.borobhai.R
+import com.sun.borobhai.activities.DetailsScreen
 
 class HorizontalListAdapter(
     private val context: Context,
@@ -36,10 +38,13 @@ class HorizontalListAdapter(
         val imageIcon = image[0]
         holder.imageView.setImageResource(imageIcon)
 
+        val link = links.getOrNull(position)
+
         holder.itemView.setOnClickListener {
-            val link = links.getOrNull(position)
             if (!link.isNullOrEmpty()) {
-                openLinkInBrowser(link)
+                val intent = Intent(context, DetailsScreen::class.java)
+                intent.putExtra(DetailsScreen.EXTRA_LINK, link)
+                context.startActivity(intent)
             }
         }
     }

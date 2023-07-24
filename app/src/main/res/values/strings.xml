@@ -2,4 +2,17 @@
     <string name="app_name">BoroBhai</string>
     <string name="open_nav">Open</string>
     <string name="close_nav">Close</string>
+    <string name="some_tips">
+        <![CDATA[
+            - Practice coding regularly to improve your skills.\n\n
+            - Break down complex problems into smaller tasks.\n\n
+            - Read and analyze code written by experienced developers.\n\n
+            - Build projects to apply your knowledge in real-world scenarios.\n\n
+            - Don\'t hesitate to ask for help and seek guidance from the community.\n\n
+            - Stay curious and explore new programming concepts.\n\n
+            - Review and revise previous topics to reinforce your learning.\n\n
+            - Take breaks during intense study sessions to avoid burnout.\n\n
+            - Celebrate your achievements and enjoy the learning process!\n\n
+        ]]>
+    </string>
 </resources>
