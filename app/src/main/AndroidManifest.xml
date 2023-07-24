@@ -16,6 +16,9 @@
         android:theme="@style/Theme.BoroBhai"
         tools:targetApi="31">
         <activity
+            android:name=".activities.DetailsScreen"
+            android:exported="false" />
+        <activity
             android:name=".activities.SometipsActivity"
             android:exported="false" />
         <activity
