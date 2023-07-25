@@ -13,19 +13,11 @@ import com.sun.borobhai.helper.FragmentHelper.setupRecyclerView
 
 class PythonFragment : Fragment() {
     private lateinit var binding : FragmentPythonBinding
-    private lateinit var booksImage : List<Int>
-    private lateinit var compilerImage : List<Int>
-    private lateinit var editorImage : List<Int>
-    private lateinit var youtubeImage : List<Int>
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentPythonBinding.inflate(layoutInflater)
-        booksImage = listOf(R.drawable.book)
-        compilerImage = listOf(R.drawable.compiler)
-        editorImage = listOf(R.drawable.coding)
-        youtubeImage = listOf(R.drawable.youtuber)
 
         val value = arguments?.getString("value_key")
 
@@ -42,28 +34,32 @@ class PythonFragment : Fragment() {
                 binding.rvBestBooks,
                 it.bestBooks,
                 it.booksDownloadLinks,
-                booksImage
+                0,
+                0
             )
             setupRecyclerView(
                 requireContext(),
                 binding.rvBestEditors,
                 it.bestEditors,
                 it.editorsDownloadLinks,
-                editorImage
+                1,
+                0
             )
             setupRecyclerView(
                 requireContext(),
                 binding.rvBestYouTubeChannels,
                 it.bestYouTubeChannels,
                 it.youtubeChannelsLinks,
-                youtubeImage
+                2,
+                1
             )
             setupRecyclerView(
                 requireContext(),
                 binding.rvOnlineCompilers,
                 it.onlineCompilers,
-                emptyList(),
-                compilerImage
+                it.onlineCompilersLink,
+                3,
+                0
             )
         }
         return binding.root

@@ -41,9 +41,9 @@ object FragmentHelper {
         return json
     }
 
-    fun setupRecyclerView(context : Context, recyclerView: RecyclerView, dataList: List<String>, links: List<String>, image: List<Int>){
+    fun setupRecyclerView(context : Context, recyclerView: RecyclerView, dataList: List<String>, links: List<String>, checker : Int, youtubeLink : Int){
         recyclerView.layoutManager = GridLayoutManager(context, 3)
-        recyclerView.adapter = HorizontalListAdapter(context, dataList, links, image)
+        recyclerView.adapter = HorizontalListAdapter(context, dataList, links, checker, youtubeLink)
     }
 
     fun getListFromJSONArray(jsonArray: JSONArray): List<String> {
@@ -64,24 +64,28 @@ object FragmentHelper {
                     if (name == value) {
                         val definition = languageObject.getString("definition")
                         val whyLearn = languageObject.getString("why_learn")
+                        val workingField = languageObject.getString("working_field")
                         val bestBooks = getListFromJSONArray(languageObject.getJSONArray("best_books"))
                         val bestEditors = getListFromJSONArray(languageObject.getJSONArray("best_editors"))
                         val bestYouTubeChannels = getListFromJSONArray(languageObject.getJSONArray("best_youtube_channels"))
                         val onlineCompilers = getListFromJSONArray(languageObject.getJSONArray("online_compilers"))
                         val booksDownloadLinks = getListFromJSONArray(languageObject.getJSONArray("books_download_links"))
                         val editorsDownloadLinks = getListFromJSONArray(languageObject.getJSONArray("editors_download_links"))
+                        val onlineCompilersLink = getListFromJSONArray(languageObject.getJSONArray("online_compilers_link"))
                         val youtubeChannelsLinks = getListFromJSONArray(languageObject.getJSONArray("youtube_channels_links"))
 
                         return Language(
                             name,
                             definition,
                             whyLearn,
+                            workingField,
                             bestBooks,
                             bestEditors,
                             bestYouTubeChannels,
                             onlineCompilers,
                             booksDownloadLinks,
                             editorsDownloadLinks,
+                            onlineCompilersLink,
                             youtubeChannelsLinks
                         )
                     }

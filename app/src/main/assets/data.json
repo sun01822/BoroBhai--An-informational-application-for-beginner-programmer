@@ -22,17 +22,17 @@
         "thenewboston",
         "CodeWithHarry",
         "GeeksforGeeks",
-        "Corey Schafer",
-        "Code Bullet",
-        "Programming with Mosh"
+        "Neso Academy",
+        "WsCube Tech",
+        "Bro Code"
       ],
       "online_compilers": [
         "OnlineGDB",
-        "Repl.it",
+        "Replit",
         "JDoodle",
         "IDEone",
-        "Coding Ground",
-        "GDB Online Debugger"
+        "Tutorialspoint",
+        "Programiz"
       ],
       "books_download_links": [
         "link1",
@@ -48,20 +48,20 @@
         "https://www.codeblocks.org/downloads/binaries/"
       ],
       "online_compilers_link": [
-        "link1",
-        "link2",
-        "link3",
-        "link4",
-        "link5",
-        "link6"
+        "https://www.onlinegdb.com/online_c_compiler",
+        "https://replit.com/@replit/C#main.c",
+        "https://www.jdoodle.com/c-online-compiler/",
+        "https://ideone.com/l/c",
+        "https://www.tutorialspoint.com/compile_c_online.php",
+        "https://www.programiz.com/c-programming/online-compiler/"
       ],
       "youtube_channels_links": [
-        "link1",
-        "link2",
-        "link3",
-        "link4",
-        "link5",
-        "link6"
+        "https://www.youtube.com/playlist?list=PL6gx4Cwl9DGAKIXv8Yr6nhGJ9Vlcjyymq",
+        "https://www.youtube.com/playlist?list=PLu0W_9lII9aiXlHcLx-mDH1Qul38wD3aR",
+        "https://www.youtube.com/playlist?list=PLqM7alHXFySFsVw4PvHRps16CR5puzc_K",
+        "https://www.youtube.com/playlist?list=PLBlnK6fEyqRggZZgYpPMUxdY1CYkZtARR",
+        "https://www.youtube.com/playlist?list=PLjVLYmrlmjGcrFEK43__3yeeySU1N7vpW",
+        "https://www.youtube.com/watch?v=87SH2Cn0s9A&ab_channel=BroCode"
       ]
     },
     {
