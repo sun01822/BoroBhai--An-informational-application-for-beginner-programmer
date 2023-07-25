@@ -10,6 +10,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.sun.borobhai.R
 import com.sun.borobhai.activities.DetailsScreen
 
@@ -17,10 +18,11 @@ class HorizontalListAdapter(
     private val context: Context,
     private val data: List<String>,
     private val links: List<String>,
-    private val image : List<Int>
+    private val checker : Int,
+    private val youtubeLink : Int
 ) :
     RecyclerView.Adapter<HorizontalListAdapter.ViewHolder>() {
-
+    private lateinit var imageList : List<Int>
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val textView: TextView = itemView.findViewById(R.id.tvItemName)
         val imageView: ImageView = itemView.findViewById(R.id.imageView)
@@ -33,10 +35,11 @@ class HorizontalListAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        imageList = listOf(R.drawable.book, R.drawable.coding, R.drawable.youtuber, R.drawable.compiler)
         val item = data[position]
         holder.textView.text = item
-        val imageIcon = image[0]
-        holder.imageView.setImageResource(imageIcon)
+        val imageIcon = imageList[checker]
+        Glide.with(context).load(imageIcon).into(holder.imageView)
 
         val link = links.getOrNull(position)
 
@@ -44,6 +47,7 @@ class HorizontalListAdapter(
             if (!link.isNullOrEmpty()) {
                 val intent = Intent(context, DetailsScreen::class.java)
                 intent.putExtra(DetailsScreen.EXTRA_LINK, link)
+                intent.putExtra("youtubeLink", youtubeLink)
                 context.startActivity(intent)
             }
         }
