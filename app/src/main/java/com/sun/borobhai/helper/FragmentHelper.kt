@@ -2,6 +2,7 @@ package com.sun.borobhai.helper
 
 import android.content.Context
 import android.os.Bundle
+import android.widget.TextView
 import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
@@ -95,5 +96,50 @@ object FragmentHelper {
             }
         }
         return null
+    }
+
+    fun fetchDataFromJsonFile(context: Context, value: String, tvLanguageName: TextView, tvLanguageDefinition: TextView, tvWhyLearn: TextView
+    , rvBestBooks : RecyclerView, rvBestEditors : RecyclerView, rvBestYouTubeChannels : RecyclerView, rvOnlineCompilers : RecyclerView){
+        val jsonString = loadJSONFromAsset(context, "data.json")
+        val languageData = parseLanguageDataFromJSON(jsonString?.toString(), value)
+
+        languageData?.let {
+            tvLanguageName.text = it.name
+            tvLanguageDefinition.text = it.definition
+            tvWhyLearn.text = it.whyLearn
+
+            setupRecyclerView(
+                context,
+                rvBestBooks,
+                it.bestBooks,
+                it.booksDownloadLinks,
+                0,
+                0
+            )
+            setupRecyclerView(
+                context,
+                rvBestEditors,
+                it.bestEditors,
+                it.editorsDownloadLinks,
+                1,
+                0
+            )
+            setupRecyclerView(
+                context,
+                rvBestYouTubeChannels,
+                it.bestYouTubeChannels,
+                it.youtubeChannelsLinks,
+                2,
+                1
+            )
+            setupRecyclerView(
+                context,
+                rvOnlineCompilers,
+                it.onlineCompilers,
+                it.onlineCompilersLink,
+                3,
+                0
+            )
+        }
     }
 }

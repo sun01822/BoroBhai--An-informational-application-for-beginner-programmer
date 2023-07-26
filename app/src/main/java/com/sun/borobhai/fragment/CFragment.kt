@@ -6,11 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import com.sun.borobhai.R
 import com.sun.borobhai.databinding.FragmentCBinding
-import com.sun.borobhai.helper.FragmentHelper.loadJSONFromAsset
-import com.sun.borobhai.helper.FragmentHelper.parseLanguageDataFromJSON
-import com.sun.borobhai.helper.FragmentHelper.setupRecyclerView
+import com.sun.borobhai.helper.FragmentHelper.fetchDataFromJsonFile
 
 class CFragment : Fragment() {
     private lateinit var binding: FragmentCBinding
@@ -21,47 +18,10 @@ class CFragment : Fragment() {
         binding = FragmentCBinding.inflate(layoutInflater)
         val value = arguments?.getString("value_key")
 
-        val jsonString = loadJSONFromAsset(requireContext(), "data.json")
-        val languageData = parseLanguageDataFromJSON(jsonString?.toString(), value!!)
+        fetchDataFromJsonFile(requireContext(), value.toString(), binding.tvLanguageName,
+            binding.tvLanguageDefinition, binding.tvWhyLearn, binding.rvBestBooks,
+            binding.rvBestEditors, binding.rvBestYouTubeChannels, binding.rvOnlineCompilers)
 
-        languageData?.let {
-            binding.tvLanguageName.text = it.name
-            binding.tvLanguageDefinition.text = it.definition
-            binding.tvWhyLearn.text = it.whyLearn
-
-            setupRecyclerView(
-                requireContext(),
-                binding.rvBestBooks,
-                it.bestBooks,
-                it.booksDownloadLinks,
-                0,
-                0
-            )
-            setupRecyclerView(
-                requireContext(),
-                binding.rvBestEditors,
-                it.bestEditors,
-                it.editorsDownloadLinks,
-                1,
-                0
-            )
-            setupRecyclerView(
-                requireContext(),
-                binding.rvBestYouTubeChannels,
-                it.bestYouTubeChannels,
-                it.youtubeChannelsLinks,
-                2,
-                1
-            )
-           setupRecyclerView(
-                requireContext(),
-                binding.rvOnlineCompilers,
-                it.onlineCompilers,
-                it.onlineCompilersLink,
-                3,
-               0
-            )
-        }
         return binding.root
     }
 }
