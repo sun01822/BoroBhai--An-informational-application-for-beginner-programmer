@@ -1,41 +1,47 @@
 package com.sun.borobhai.activities
 
-import android.content.ActivityNotFoundException
-import android.content.Intent
-import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.KeyEvent
-import android.webkit.WebView
+import android.view.View
 import android.webkit.WebViewClient
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.AbstractYouTubePlayerListener
+import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 import com.sun.borobhai.R
 import com.sun.borobhai.databinding.ActivityDetailsScreenBinding
 import com.sun.borobhai.helper.Helper
+import java.util.regex.Pattern
 
 class DetailsScreen : AppCompatActivity() {
-    private lateinit var binding : ActivityDetailsScreenBinding
+    private lateinit var binding: ActivityDetailsScreenBinding
+    private lateinit var youTubePlayerView: YouTubePlayerView
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        window.setFlags(Helper().FLAG_LAYOUT_NO_LIMITS, Helper().FLAG_LAYOUT_NO_LIMITS)
         binding = ActivityDetailsScreenBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        window.setFlags(Helper().FLAG_LAYOUT_NO_LIMITS, Helper().FLAG_LAYOUT_NO_LIMITS)
+
         val link = intent.getStringExtra(EXTRA_LINK)
-        val youtubeLink = intent.getIntExtra("youtubeLink", 0)
-        if (!link.isNullOrEmpty()) {
-            if(youtubeLink!=0){
-                openYoutubeChannel(link)
-            }else{
-                loadLinkInWebView(link)
-            }
+        val youtubeLink = intent.getStringExtra("youtubeLink")
+
+        if (youtubeLink == "y") {
+            binding.youtubePlayerView.visibility = View.VISIBLE
+            binding.webView.visibility = View.GONE
+            val videoId = getYouTubeVideoId(link.toString())
+            println("VideoID: $videoId")
+            initializeYouTubePlayer(videoId)
         } else {
-            // Handle the case where the link is null or empty
-            Toast.makeText(this, "Link is empty", Toast.LENGTH_SHORT).show()
+            binding.youtubePlayerView.visibility = View.GONE
+            binding.webView.visibility = View.VISIBLE
+            loadLinkInWebView(link.toString())
         }
     }
+
     private fun loadLinkInWebView(link: String) {
-        val webView = findViewById<WebView>(R.id.webView)
+        val webView = binding.webView
         webView.webViewClient = WebViewClient()
         webView.loadUrl(link)
     }
@@ -44,18 +50,31 @@ class DetailsScreen : AppCompatActivity() {
         const val EXTRA_LINK = "extra_link"
     }
 
-    fun openYoutubeChannel(youtubeLink: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(youtubeLink))
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.setPackage("com.google.android.youtube")
+    private fun getYouTubeVideoId(youtubeLink: String): String? {
+        val regex =
+            "(?<=youtu.be/|watch\\?v=|/videos/|embed\\/|youtu.be\\/|watch\\?v=|\\/videos\\/|embed\\/)[^#\\&\\?]*"
+        val pattern = Pattern.compile(regex)
+        val matcher = pattern.matcher(youtubeLink)
+        return if (matcher.find()) {
+            matcher.group()
+        } else {
+            null
+        }
+    }
 
-        try {
-            startActivity(intent)
-            finish()
-        } catch (e: ActivityNotFoundException) {
-            // YouTube app is not installed, open in web browser
-            intent.setPackage(null)
-            startActivity(intent)
+    private fun initializeYouTubePlayer(videoId: String?) {
+        if (!videoId.isNullOrEmpty()) {
+            youTubePlayerView = findViewById(R.id.youtube_player_view)
+            lifecycle.addObserver(youTubePlayerView)
+
+            youTubePlayerView.addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
+                override fun onReady(youTubePlayer: YouTubePlayer) {
+                    youTubePlayer.loadVideo(videoId, 0f)
+                }
+            })
+        } else {
+            Toast.makeText(this, "Invalid YouTube video link", Toast.LENGTH_SHORT).show()
+            finish() // Finish the activity if YouTube video link is invalid
         }
     }
 }

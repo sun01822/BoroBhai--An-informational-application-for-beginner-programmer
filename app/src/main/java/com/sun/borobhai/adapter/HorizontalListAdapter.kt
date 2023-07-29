@@ -19,7 +19,7 @@ class HorizontalListAdapter(
     private val data: List<String>,
     private val links: List<String>,
     private val checker : Int,
-    private val youtubeLink : Int
+    private val youtubeLink : String
 ) :
     RecyclerView.Adapter<HorizontalListAdapter.ViewHolder>() {
     private lateinit var imageList : List<Int>
@@ -55,10 +55,5 @@ class HorizontalListAdapter(
 
     override fun getItemCount(): Int {
         return data.size
-    }
-
-    private fun openLinkInBrowser(link: String) {
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(link))
-        context.startActivity(browserIntent)
     }
 }
