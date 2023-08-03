@@ -22,9 +22,6 @@
             android:name=".activities.SometipsActivity"
             android:exported="false" />
         <activity
-            android:name=".activities.SomeTipsActivity"
-            android:exported="false" />
-        <activity
             android:name=".activities.ProfileActivity"
             android:exported="false" />
         <activity
