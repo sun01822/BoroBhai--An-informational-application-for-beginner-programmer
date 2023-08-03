@@ -10,7 +10,6 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.sun.borobhai.R
 import com.sun.borobhai.databinding.ActivityDetailsScreenBinding
-import com.sun.borobhai.helper.Helper
 
 class DetailsScreen : AppCompatActivity() {
     private lateinit var binding: ActivityDetailsScreenBinding
