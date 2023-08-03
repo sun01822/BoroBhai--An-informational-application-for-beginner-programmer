@@ -3,9 +3,11 @@ package com.sun.borobhai.helper
 import android.content.Context
 import android.os.Bundle
 import android.widget.TextView
+import androidx.core.content.ContentProviderCompat.requireContext
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.sun.borobhai.R
 import com.sun.borobhai.adapter.HorizontalListAdapter
 import com.sun.borobhai.data.Language
 import org.json.JSONArray
@@ -40,7 +42,7 @@ object FragmentHelper {
         return json
     }
 
-    fun setupRecyclerView(context: Context, recyclerView: RecyclerView, dataList: List<String>, links: List<String>, checker: Int, youtubeLink: String){
+    fun setupRecyclerView(context : Context, recyclerView: RecyclerView, dataList: List<String>, links: List<String>, checker : Int, youtubeLink : Int){
         recyclerView.layoutManager = GridLayoutManager(context, 3)
         recyclerView.adapter = HorizontalListAdapter(context, dataList, links, checker, youtubeLink)
     }
@@ -112,7 +114,7 @@ object FragmentHelper {
                 it.bestBooks,
                 it.booksDownloadLinks,
                 0,
-                "n"
+                0
             )
             setupRecyclerView(
                 context,
@@ -120,7 +122,7 @@ object FragmentHelper {
                 it.bestEditors,
                 it.editorsDownloadLinks,
                 1,
-                "n"
+                0
             )
             setupRecyclerView(
                 context,
@@ -128,7 +130,7 @@ object FragmentHelper {
                 it.bestYouTubeChannels,
                 it.youtubeChannelsLinks,
                 2,
-                "y"
+                1
             )
             setupRecyclerView(
                 context,
@@ -136,7 +138,7 @@ object FragmentHelper {
                 it.onlineCompilers,
                 it.onlineCompilersLink,
                 3,
-                "n"
+                0
             )
         }
     }
