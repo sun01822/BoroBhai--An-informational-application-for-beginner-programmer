@@ -2,11 +2,14 @@ package com.sun.borobhai.activities
 
 import android.app.Activity
 import android.content.Intent
+import android.content.res.ColorStateList
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
+import android.view.View
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DataSnapshot
@@ -15,6 +18,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.FirebaseStorage
+import com.sun.borobhai.R
 import com.sun.borobhai.databinding.ActivityProfleBinding
 
 @Suppress("DEPRECATION")
@@ -28,6 +32,8 @@ class ProfileActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityProfleBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val loadingColor = ContextCompat.getColor(this, R.color.black)
+        binding.progressBar.indeterminateTintList = ColorStateList.valueOf(loadingColor)
 
         auth = FirebaseAuth.getInstance()
         val userId = auth.currentUser?.uid ?: ""
@@ -76,6 +82,10 @@ class ProfileActivity : AppCompatActivity() {
     }
 
     private fun updateProfileData() {
+        // Disable the submit button and show the progress bar
+        binding.update.isEnabled = false
+        binding.progressBar.visibility = View.VISIBLE
+
         // Get updated values from the EditTexts
         val name = binding.fullName.text.toString().trim()
         val semester = binding.semesterEt.text.toString().trim()
@@ -100,6 +110,8 @@ class ProfileActivity : AppCompatActivity() {
                         )
                         databaseReference.updateChildren(profileData)
                             .addOnCompleteListener { task ->
+                                binding.update.isEnabled = true
+                                binding.progressBar.visibility = View.GONE
                                 if (task.isSuccessful) {
                                     Toast.makeText(this, "Profile updated successfully.", Toast.LENGTH_SHORT).show()
                                 } else {
@@ -121,6 +133,8 @@ class ProfileActivity : AppCompatActivity() {
 
             databaseReference.updateChildren(profileData)
                 .addOnCompleteListener { task ->
+                    binding.update.isEnabled = true
+                    binding.progressBar.visibility = View.GONE
                     if (task.isSuccessful) {
                         Toast.makeText(this, "Profile updated successfully.", Toast.LENGTH_SHORT).show()
                     } else {

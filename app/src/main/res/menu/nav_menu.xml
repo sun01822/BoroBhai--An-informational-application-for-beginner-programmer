@@ -15,7 +15,7 @@
 
         <item
             android:icon="@drawable/rate_icon"
-            android:id="@+id/nav_rate"
+            android:id="@+id/nav_rateus"
             android:title="Rate Us"/>
         <item
             android:icon="@drawable/about_us_icon"
