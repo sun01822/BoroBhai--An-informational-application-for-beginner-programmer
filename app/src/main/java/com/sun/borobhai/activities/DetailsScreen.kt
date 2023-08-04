@@ -1,5 +1,6 @@
 package com.sun.borobhai.activities
 
+import android.annotation.SuppressLint
 import android.content.ActivityNotFoundException
 import android.content.Intent
 import android.net.Uri
@@ -35,8 +36,10 @@ class DetailsScreen : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     private fun loadLinkInWebView(link: String) {
         val webView = findViewById<WebView>(R.id.webView)
+        webView.settings.javaScriptEnabled = true
         webView.webViewClient = WebViewClient()
         webView.loadUrl(link)
     }
