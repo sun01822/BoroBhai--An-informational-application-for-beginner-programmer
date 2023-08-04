@@ -20,6 +20,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.sun.borobhai.activities.LogIn
 import com.sun.borobhai.activities.ProfileActivity
+import com.sun.borobhai.activities.RateUsActivity
 import com.sun.borobhai.activities.SometipsActivity
 import com.sun.borobhai.adapter.ImageSliderAdapter
 import com.sun.borobhai.databinding.ActivityMainBinding
@@ -103,6 +104,10 @@ class MainActivity : AppCompatActivity() {
                     }
                     R.id.nav_some_tips -> {
                         startActivity(Intent(this, SometipsActivity::class.java))
+                        true
+                    }
+                    R.id.nav_rateus ->{
+                        startActivity(Intent(this, RateUsActivity::class.java))
                         true
                     }
                     // Handle other menu item clicks if needed

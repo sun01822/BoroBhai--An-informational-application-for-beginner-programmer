@@ -2,7 +2,7 @@
     <!-- Base application theme. -->
     <style name="Theme.BoroBhai" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">@color/myColor</item>
+        <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">@color/myColor</item>
         <item name="colorOnPrimary">@color/black</item>
         <!-- Secondary brand color. -->
