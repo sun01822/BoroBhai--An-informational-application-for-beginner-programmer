@@ -58,7 +58,6 @@ class RatingsAdapter : RecyclerView.Adapter<RatingsAdapter.RatingViewHolder>() {
             commentTextView.text = rating.comment
 
             // Fetch user data based on userId (UID)
-            val auth : FirebaseAuth = FirebaseAuth.getInstance()
             val database: FirebaseDatabase = FirebaseDatabase.getInstance()
             val uid = rating.userId
             val userRef = database.reference.child("users").child(uid!!)
