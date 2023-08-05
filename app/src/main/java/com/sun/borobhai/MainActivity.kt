@@ -111,6 +111,10 @@ class MainActivity : AppCompatActivity() {
                         startActivity(Intent(this, ShareActivity::class.java))
                         true
                     }
+                    R.id.nav_about ->{
+                        startActivity(Intent(this, AboutUsActivity::class.java))
+                        true
+                    }
                     // Handle other menu item clicks if needed
                     else -> false
                 }
