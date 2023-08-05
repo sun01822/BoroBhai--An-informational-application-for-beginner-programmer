@@ -33,6 +33,7 @@
             android:textSize="16sp"
             android:layout_marginTop="16dp"
             android:padding="16dp"
+            android:textColor="@color/black"
             android:lineSpacingExtra="8dp" />
 
         <!-- Why Learn -->
@@ -43,6 +44,7 @@
             android:textSize="16sp"
             android:layout_marginTop="16dp"
             android:padding="16dp"
+            android:textColor="@color/black"
             android:lineSpacingExtra="8dp" />
 
 
@@ -57,6 +59,7 @@
             android:text="Best Books"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp" />
@@ -68,6 +71,7 @@
             android:layout_marginTop="8dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:background="@color/white"
             tools:listitem="@layout/item_horizontal_list" />
 
         <!-- Best Editors title -->
@@ -79,6 +83,7 @@
             android:textStyle="bold"
             android:layout_marginTop="16dp"
             android:paddingStart="16dp"
+            android:textColor="@color/black"
             android:paddingEnd="16dp" />
         <!-- RecyclerView for Editors -->
         <androidx.recyclerview.widget.RecyclerView
@@ -88,6 +93,7 @@
             android:layout_marginTop="8dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:background="@color/white"
             tools:listitem="@layout/item_horizontal_list" />
 
         <!-- Best YouTube Channels Title -->
@@ -97,6 +103,7 @@
             android:text="Best YouTube Channels"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp" />
@@ -109,6 +116,7 @@
             android:layout_marginTop="8dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:background="@color/white"
             tools:listitem="@layout/item_horizontal_list" />
 
         <!-- Online Compilers Title -->
@@ -118,6 +126,7 @@
             android:text="Online Compilers"
             android:textSize="20sp"
             android:textStyle="bold"
+            android:textColor="@color/black"
             android:layout_marginTop="16dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp" />
@@ -130,6 +139,7 @@
             android:layout_marginTop="8dp"
             android:paddingStart="16dp"
             android:paddingEnd="16dp"
+            android:background="@color/white"
             tools:listitem="@layout/item_horizontal_list" />
 
 

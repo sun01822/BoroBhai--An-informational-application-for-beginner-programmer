@@ -47,6 +47,9 @@ class RateUsActivity : AppCompatActivity() {
         // Check if the user has already rated
         checkUserRating()
 
+        // Fetch and display the ratings from Firebase
+        fetchRatingsFromFirebase()
+
         // Listen for changes in the Firebase database
         databaseReference.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -125,5 +128,26 @@ class RateUsActivity : AppCompatActivity() {
     private fun updateRatingValue(ratingValue: Float) {
         // Update tvRatingValue to show the selected rating
         binding.tvRatingValue.text = String.format("%.1f", ratingValue)
+    }
+
+    private fun fetchRatingsFromFirebase() {
+        // Fetch the ratings data from Firebase
+        databaseReference.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                val ratings: MutableList<Rating> = mutableListOf()
+                // Iterate through the database snapshot and add ratings to the list
+                for (ratingSnapshot in snapshot.children) {
+                    val rating = ratingSnapshot.getValue(Rating::class.java)
+                    rating?.let { ratings.add(it) }
+                }
+                // Update the RatingsAdapter with the new ratings data
+                ratingsAdapter.updateRatingsData(ratings)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle any errors that might occur during data retrieval
+                Toast.makeText(this@RateUsActivity, error.toString(), Toast.LENGTH_SHORT).show()
+            }
+        })
     }
 }

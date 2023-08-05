@@ -45,6 +45,13 @@ class RatingsAdapter : RecyclerView.Adapter<RatingsAdapter.RatingViewHolder>() {
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateRatingsData(newRatings: List<Rating>) {
+        ratingsList.clear()
+        ratingsList.addAll(newRatings)
+        notifyDataSetChanged()
+    }
+
     class RatingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val profileImage: CircleImageView = itemView.findViewById(R.id.ivProfileImage)
         private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
