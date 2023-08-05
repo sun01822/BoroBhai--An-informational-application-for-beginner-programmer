@@ -45,6 +45,13 @@ class RatingsAdapter : RecyclerView.Adapter<RatingsAdapter.RatingViewHolder>() {
         notifyDataSetChanged()
     }
 
+    @SuppressLint("NotifyDataSetChanged")
+    fun updateRatingsData(newRatings: List<Rating>) {
+        ratingsList.clear()
+        ratingsList.addAll(newRatings)
+        notifyDataSetChanged()
+    }
+
     class RatingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         private val profileImage: CircleImageView = itemView.findViewById(R.id.ivProfileImage)
         private val nameTextView: TextView = itemView.findViewById(R.id.tvName)
@@ -58,7 +65,6 @@ class RatingsAdapter : RecyclerView.Adapter<RatingsAdapter.RatingViewHolder>() {
             commentTextView.text = rating.comment
 
             // Fetch user data based on userId (UID)
-            val auth : FirebaseAuth = FirebaseAuth.getInstance()
             val database: FirebaseDatabase = FirebaseDatabase.getInstance()
             val uid = rating.userId
             val userRef = database.reference.child("users").child(uid!!)

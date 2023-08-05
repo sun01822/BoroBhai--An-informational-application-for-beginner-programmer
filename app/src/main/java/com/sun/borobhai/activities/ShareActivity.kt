@@ -15,7 +15,7 @@ class ShareActivity : AppCompatActivity() {
         binding = ActivityShareBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        shareContent = "https://www.example.com" // Replace with the link you want to share
+        shareContent = "https://drive.google.com/drive/folders/1ZAYOMwfNdt-V7vk69DceuoJ6yNfoKHdc?usp=sharing" // Replace with the link you want to share
 
         // Share button
         binding.btnShare.setOnClickListener {
