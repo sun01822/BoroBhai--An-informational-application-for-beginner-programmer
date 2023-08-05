@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- activity_about_us.xml -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:padding="16dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/developerImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo"
+        app:civ_border_color="@color/myColor"
+        app:civ_border_width="4dp"
+        android:layout_marginTop="32dp"
+        android:scaleType="centerCrop" />
+
+    <TextView
+        android:id="@+id/nameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/developerImage"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/black"
+        android:text="Developer Name"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginTop="16dp" />
+
+    <TextView
+        android:id="@+id/descriptionTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/nameTextView"
+        android:layout_centerHorizontal="true"
+        android:text="Developer Description"
+        android:textSize="16sp"
+        android:layout_marginTop="20dp" />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/descriptionTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/gmailButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/gmail"
+            android:background="@android:color/transparent"
+            android:contentDescription="Gmail"
+            android:scaleType="fitXY"
+            android:layout_marginEnd="16dp" />
+
+        <ImageButton
+            android:id="@+id/facebookButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/facebook"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:contentDescription="Facebook"
+            android:layout_marginEnd="16dp"/>
+
+        <ImageButton
+            android:id="@+id/linkedInButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/linkedin"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:contentDescription="LinkedIn"
+            android:layout_marginEnd="16dp"/>
+
+
+        <ImageButton
+            android:id="@+id/whatsappButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:src="@drawable/whatsapp"
+            android:scaleType="fitXY"
+            android:background="@android:color/transparent"
+            android:contentDescription="What'sApp"
+            android:layout_marginEnd="16dp"/>
+
+        <!-- Add more social media icons/buttons as needed -->
+
+    </LinearLayout>
+
+</RelativeLayout>

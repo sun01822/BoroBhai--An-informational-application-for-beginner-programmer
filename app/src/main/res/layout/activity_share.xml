@@ -6,6 +6,8 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@color/white"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".activities.ShareActivity"
     android:padding="16dp">
 
     <TextView
