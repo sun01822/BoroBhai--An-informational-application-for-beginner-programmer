@@ -10,7 +10,7 @@ BoroBhai -- An informational application that will be useful for new programmers
 
 ## APP Screen: 
 
-https://github.com/sun01822/BoroBhai--An-informational-application-for-beginner-programmer/blob/main/video_20230807_092232_edit.gif
+[![Watch the video](https://github.com/sun01822/BoroBhai--An-informational-application-for-beginner-programmer/blob/main/Screenshot%202023-08-05%20103446.png)]([https://youtu.be/vt5fpE0bzSY](https://github.com/sun01822/BoroBhai--An-informational-application-for-beginner-programmer/blob/main/video_20230807_092232_edit.gif))
 
 
 
