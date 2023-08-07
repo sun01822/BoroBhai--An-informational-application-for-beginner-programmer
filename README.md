@@ -8,7 +8,7 @@ BoroBhai -- An informational application that will be useful for new programmers
 <li><b>Rating and Reviews:</b> Users can rate this application and they can send any information that I can update.</li>
 
 
-## APP Screen
+## APP Screen: 
 
 ![ezgif com-video-to-gif](https://github.com/sun01822/BoroBhai--An-informational-application-for-beginner-programmer/assets/75157104/0a3e9403-3c34-4b6c-9059-e76a96531dff)
 
