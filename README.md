@@ -5,7 +5,7 @@ BoroBhai -- An informational application that will be useful for new programmers
 <li><b>User Authentication:</b> Users can sign up or log in to the app using their email and password.</li>
 <li><b>Profile Management:</b> Users can update their profile information and set a profile picture.</li>
 <li><b>Resource Sharing:</b> Users can see educational resources such as Book PDFs, YouTube channels, editor, and online compiler .</li>
-<li><b>Rating and Reviews:</b> Users can rate this application and they can send any information that I can update.</li>
+<li><b>Rating and Reviews:</b> Users can rate this application and they can send any information for updating the app.</li>
 
 
 ## APP Screen: 
